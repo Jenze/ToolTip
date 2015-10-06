@@ -1,0 +1,67 @@
+﻿<Window x:Class="ToolTip.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToolTip"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="btnEen" Grid.Row="0" Grid.Column="0" ToolTip="Dit is een simpele ToolTip."></Button>
+
+        <Button x:Name="btnTwee" Grid.Row="1" Grid.Column="1" Content="Button twee">
+            <Button.ToolTip>
+                <StackPanel>
+                    <TextBlock Margin="3">Tekst en een figuur</TextBlock>
+                    <Image Source="Resources/Naamloos.png" Stretch="None"></Image>
+                    <TextBlock Margin="3">Tekst en een figuur</TextBlock>
+                </StackPanel>
+            </Button.ToolTip>  
+        </Button>
+
+        <Button x:Name="btnDrie" Grid.Row="2" Grid.Column="2" Content="Button drie"
+                ToolTipService.InitialShowDelay="2"
+                ToolTipService.HorizontalOffset="50"
+                ToolTipService.VerticalOffset="50">
+            <Button.ToolTip>
+                <ToolTip Background="Pink" Foreground="DarkGreen" HasDropShadow="True">
+                    <StackPanel>
+                        <TextBlock Margin="3">tekst en een figuure</TextBlock>
+                        <Image Source="Resources/Naamloos.png" Stretch="None"></Image>
+                        <TextBlock Margin="3">Tekst en een figuur</TextBlock>
+                    </StackPanel>
+                </ToolTip>
+            </Button.ToolTip>
+        </Button>
+
+
+        <Button x:Name="btnVier" Grid.Row="0" Grid.Column="2"
+                VerticalAlignment="Center"
+                Padding="15"
+                Content="Button vier"
+                ToolTipService.InitialShowDelay="2"
+                ToolTipService.PlacementTarget="{Binding ElementName=btnTwee}"
+                ToolTipService.Placement="Center">
+            <Button.ToolTip>
+                <ToolTip Background="Pink" Foreground="DarkGreen" HasDropShadow="False">
+                    <StackPanel>
+                        <TextBlock Margin="3">Tekst en een figuur</TextBlock>
+                        <Image Source="Resources/Naamloos.png" Stretch="None"></Image>
+                        <TextBlock Margin="3">Tekst en een figuur</TextBlock>
+                    </StackPanel>
+                </ToolTip>
+            </Button.ToolTip>
+        </Button>
+    </Grid>
+</Window>
